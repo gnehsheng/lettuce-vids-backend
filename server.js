@@ -19,7 +19,14 @@ const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
-const io = new Server(server, {cors: {origin:'*'}})
+const io = new Server(server, {
+  cors: {
+    origin:'*',
+    methods: ["GET", "POST"],
+    transports: ['websocket', 'polling'],
+  },
+  allowEIO3: true
+})
 
 io.on("connect", (socket) => {
   socket.on("join", ({ name, room }) => {
