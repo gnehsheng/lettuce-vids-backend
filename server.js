@@ -21,7 +21,7 @@ app.use(express.json());
 
 const io = new Server(server, {
   cors: {
-    origin:'https://lettuce-vids.netlify.app/',
+    origin:'*',
     methods: ["GET", "POST"],
     transports: ['websocket', 'polling'],
   },
